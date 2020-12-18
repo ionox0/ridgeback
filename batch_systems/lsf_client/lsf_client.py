@@ -43,6 +43,7 @@ class LSFClient():
         bsub_command.extend(command)
         current_env = os.environ
         current_env['TOIL_LSF_ARGS'] = toil_lsf_args
+        current_env['TMPDIR'] = '/scratch'
         self.logger.debug("Running command: %s\nEnv: %s", bsub_command, current_env)
         process = subprocess.run(
             bsub_command, check=True, stdout=subprocess.PIPE,
